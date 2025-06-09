@@ -82,4 +82,9 @@ if __name__ == "__main__":
         if series is not None:
             signal_df = get_momentum_signals(series)
             print(signal_df.tail())
-            plot_signals(signal_df, chosen_symbol)
+
+            # ⬇️ ADD HERE
+            os.makedirs("signals", exist_ok=True)
+            signal_df.to_json(f"signals/{chosen_symbol}_momentum.json", orient="records", lines=True)
+
+            plot_momentum_signals(signal_df, chosen_symbol)

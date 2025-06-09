@@ -3,6 +3,7 @@
 from strategies.momentum_strategy import get_momentum_signals, plot_signals as plot_momentum_signals
 from strategies.mean_reversion import get_signals as get_mean_reversion_signals, plot_signals as plot_mean_reversion_signals
 from data.fetch_data import try_multiple_symbols
+from strategies.momentum_strategy import get_momentum_signals, plot_signals as plot_momentum_signals
 
 start_date = "2024-01-01"
 end_date = "2025-06-01"
