@@ -1,4 +1,4 @@
-# File: strategies/mean_reversion_real.py
+# File: strategies/mean_reversion.py
 
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -9,8 +9,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from QuantLib import TARGET, Date as QLDate
 from data.fetch_data import try_multiple_symbols
+import logging
 
 __package__ = 'strategies'
+
+# Setup logging
+os.makedirs("logs", exist_ok=True)
+logging.basicConfig(
+    filename="logs/mean_reversion.log",
+    filemode="a",
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    level=logging.INFO
+)
+logger = logging.getLogger("mean_reversion")
 
 def get_signals(price_series: pd.Series, window: int = 10, threshold: float = 1.0) -> pd.DataFrame:
     calendar = TARGET()
@@ -64,12 +75,16 @@ if __name__ == "__main__":
         "NYSE": ["F"]
     }
     start_date = "2024-01-01"
-    end_date = "2024-06-01"
+    end_date = "2025-06-01"
 
     for exchange, symbols in exchange_symbols.items():
-        print(f"\nTrying symbols for {exchange}...")
+        logger.info(f"Trying symbols for {exchange}...")
         symbol, series = try_multiple_symbols(symbols, start_date, end_date)
         if series is not None:
             signal_df = get_signals(series)
-            print(signal_df.tail())
+            logger.info(f"\n{signal_df.tail()}")
+
+            os.makedirs("signals", exist_ok=True)
+            signal_df.to_json(f"signals/{symbol}_mean_reversion.json", orient="records", lines=True)
+
             plot_signals(signal_df, symbol)

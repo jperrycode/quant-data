@@ -1,6 +1,5 @@
 # File: daily_runner.py
 
-from strategies.momentum_strategy import get_momentum_signals, plot_signals as plot_momentum_signals
 from strategies.mean_reversion import get_signals as get_mean_reversion_signals, plot_signals as plot_mean_reversion_signals
 from data.fetch_data import try_multiple_symbols
 from strategies.momentum_strategy import get_momentum_signals, plot_signals as plot_momentum_signals

@@ -9,8 +9,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from QuantLib import TARGET, Date as QLDate
 from data.fetch_data import try_multiple_symbols
+import logging
 
 __package__ = 'strategies'
+
+# Setup logging
+os.makedirs("logs", exist_ok=True)
+logging.basicConfig(
+    filename="logs/momentum.log",
+    filemode="a",
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    level=logging.INFO
+)
+logger = logging.getLogger("momentum")
 
 def get_momentum_signals(price_series: pd.Series, window: int = 10, upper: float = 0.02, lower: float = -0.02) -> pd.DataFrame:
     calendar = TARGET()
@@ -26,9 +37,9 @@ def get_momentum_signals(price_series: pd.Series, window: int = 10, upper: float
 
     def classify(roc_val):
         if roc_val > upper:
-            return "SELL"
-        elif roc_val < lower:
             return "BUY"
+        elif roc_val < lower:
+            return "SELL"
         return "HOLD"
 
     signals = roc.apply(classify)
@@ -77,14 +88,13 @@ if __name__ == "__main__":
     end_date = "2025-06-01"
 
     for exchange, sym_list in exchange_symbols.items():
-        print(f"Trying symbols for {exchange}...")
+        logger.info(f"Trying symbols for {exchange}...")
         chosen_symbol, series = try_multiple_symbols(sym_list, start_date, end_date)
         if series is not None:
             signal_df = get_momentum_signals(series)
-            print(signal_df.tail())
+            logger.info(f"\n{signal_df.tail()}")
 
-            # ⬇️ ADD HERE
             os.makedirs("signals", exist_ok=True)
             signal_df.to_json(f"signals/{chosen_symbol}_momentum.json", orient="records", lines=True)
 
-            plot_momentum_signals(signal_df, chosen_symbol)
+            plot_signals(signal_df, chosen_symbol)
