@@ -1,0 +1,33 @@
+services:
+  ollama1:
+    image: ollama/ollama
+    container_name: ollama1
+    ports:
+      - "11435:11434"
+    networks:
+      - ollama_net
+
+  ollama2:
+    image: ollama/ollama
+    container_name: ollama2
+    ports:
+      - "11436:11434"
+    networks:
+      - ollama_net
+
+  ollama_lb:
+    image: nginx
+    container_name: ollama_lb
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - ollama1
+      - ollama2
+    networks:
+      - ollama_net
+
+networks:
+  ollama_net:
+    driver: bridge

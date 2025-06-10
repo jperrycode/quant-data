@@ -1,0 +1,13 @@
+{
+  "features": [
+    "price",
+    "roc"
+  ],
+  "classes": [
+    "BUY",
+    "HOLD",
+    "SELL"
+  ],
+  "accuracy": 1.0,
+  "file": "models/momentum_rf.pkl"
+}

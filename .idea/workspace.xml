@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff2b0363-cc62-4821-973d-3180f824cf37" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/llm/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/llm/analyze_signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ml/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ml/train_predictor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/momentum_rf.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signals/F_momentum.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/logging_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/strategy_runner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/quant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/quant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daily_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/daily_runner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/momentum.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/momentum.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/strategies/mean_reversion.py" beforeDir="false" afterPath="$PROJECT_DIR$/strategies/mean_reversion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/strategies/momentum_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/strategies/momentum_strategy.py" afterDir="false" />
     </list>

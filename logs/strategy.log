@@ -1,0 +1,6 @@
+[2025-06-09 16:39:25,410] [INFO] [Momentum] Trying symbols for NYSE...
+[2025-06-09 16:39:25,501] [INFO] [Momentum] Saved signals to signals/F_momentum.json
+[2025-06-09 16:39:25,503] [INFO] [Momentum] Signal distribution: {'SELL': 99, 'BUY': 97, 'HOLD': 84}
+[2025-06-09 16:39:29,648] [INFO] [Mean Reversion] Trying symbols for NYSE...
+[2025-06-09 16:39:29,663] [INFO] [Mean Reversion] Saved signals to signals/F_mean_reversion.json
+[2025-06-09 16:39:29,664] [INFO] [Mean Reversion] Signal distribution: {'HOLD': 267, 'BUY': 9, 'SELL': 4}
